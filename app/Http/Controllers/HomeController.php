@@ -24,8 +24,6 @@ class HomeController extends Controller
     public function index()
     {
         $shortURL = \AshAllenDesign\ShortURL\Models\ShortURL::latest()->take(1)->get();
-        // dd($shortURL);
-        return view('home',compact('shortURL'));
-        // return view('home');
+        return view('home', compact('shortURL'));
     }
 }
