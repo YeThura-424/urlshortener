@@ -21,14 +21,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home',  [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
-Route::get('/',[App\Http\Controllers\FrontendController::class,'index'])->name("index");
-// Route::resource('/shorten',[App\Http\Controllers\ShortenController::class]);
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name("index");
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/shorten', 'App\Http\Controllers\ShortenController');
-    
 });
 
 Route::get('/custom/{shortURLKey}', '\AshAllenDesign\ShortURL\Controllers\ShortURLController');
