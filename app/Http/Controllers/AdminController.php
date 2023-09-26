@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use AshAllenDesign\ShortURL\Models\ShortURL;
+use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $shortURL = \AshAllenDesign\ShortURL\Models\ShortURL::latest()->get();
-        $shortURLVisit = \AshAllenDesign\ShortURL\Models\ShortURLVisit::latest()->get();
-        // dd($shortURLVisit);
-        return view('dashboard',compact('shortURL','shortURLVisit'));
-        // return view('home');
+        $shortURL = ShortURL::latest()->get();
+        $shortURLVisit = ShortURLVisit::latest()->get();
+        return view('dashboard', compact('shortURL', 'shortURLVisit'));
     }
 }
