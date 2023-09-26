@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use AshAllenDesign\ShortURL\Facades\ShortURL;
-
+use AshAllenDesign\ShortURL\Models\ShortURL;
 
 class ShortenController extends Controller
 {
@@ -13,17 +13,8 @@ class ShortenController extends Controller
      */
     public function index()
     {
-        $shortURL = \AshAllenDesign\ShortURL\Models\ShortURL::latest()->take(3)->get();
-        // dd($shortURL);
-        return view('home',compact('shortURL'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $shortURL = ShortURL::latest()->take(3)->get();
+        return view('home', compact('shortURL'));
     }
 
     /**
